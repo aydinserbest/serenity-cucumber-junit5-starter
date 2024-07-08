@@ -6,8 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //plugin = {"pretty"},
-        features = "src/test/resources/features"
+        plugin = {"pretty"},
+        features = "src/test/resources/features",
+        snippets = CucumberOptions.SnippetType.CAMELCASE
+        //snippets = CucumberOptions.SnippetType.UNDERSCORE
 )
 
 public class AcceptanceTestSuite {
