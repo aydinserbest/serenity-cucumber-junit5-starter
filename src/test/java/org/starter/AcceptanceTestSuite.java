@@ -12,8 +12,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @SelectClasspathResource("features")
 //@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "starter") // no need unless works from command line
 //@ConfigurationParameter(key = "cucumber.publish.enabled", value = "true")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-reports.html")
-
-
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME,
+        value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty")
 public class AcceptanceTestSuite {
 }

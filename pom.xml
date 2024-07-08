@@ -12,8 +12,8 @@
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <serenity.version>4.1.20</serenity.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,17 +32,35 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
+
     <dependencies>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
         </dependency>
+
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
@@ -55,14 +73,6 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/de.monochromata.cucumber/reporting-plugin -->
-        <dependency>
-            <groupId>de.monochromata.cucumber</groupId>
-            <artifactId>reporting-plugin</artifactId>
-            <version>5.0.0</version>
-        </dependency>
-
-
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -81,17 +91,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>2.22.1</version>
                 <configuration>
-                    <skip>true</skip>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>2.22.1</version>
                 <configuration>
                     <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/Test*.java</include>
                         <include>**/*TestSuite.java</include>
+                        <include>**/When*.java</include>
                     </includes>
                 </configuration>
                 <executions>
@@ -106,11 +119,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.version}</version>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
