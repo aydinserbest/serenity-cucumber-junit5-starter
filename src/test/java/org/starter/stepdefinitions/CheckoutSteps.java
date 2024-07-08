@@ -17,4 +17,5 @@ public class CheckoutSteps {
     public void the_total_price_should_be_40c() {
 
     }
+
 }
