@@ -1,10 +1,16 @@
 package org.starter.implementation;
 
-public class Checkout {
+import java.util.HashMap;
+import java.util.Map;
 
-    public void addToBasket(int itemCount, String itemName) {
+public class Checkout {
+    private int runningTotal = 0;
+
+    public void addToBasket(int count, int price) {
+        runningTotal += (count * price);
     }
+
     public int total() {
-        return 40;
+        return runningTotal;
     }
 }
