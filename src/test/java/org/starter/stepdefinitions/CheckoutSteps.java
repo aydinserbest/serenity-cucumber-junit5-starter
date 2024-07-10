@@ -22,7 +22,8 @@ public class CheckoutSteps {
         int price = priceList.get(product);
         checkout.add(count, price);
     }
-    @Then("the total price should be {int}c")
+    @Then("the total price should be {int}c")  // {int} yer tutucusu, tam sayı değerini yakalar.
+// 'c' sonundaki 'cent' anlamında kullanılan sabit karakter.
     public void verify_total_price(int total) {
         int actual = checkout.getRunningTotal();
         assertEquals(total, actual);
