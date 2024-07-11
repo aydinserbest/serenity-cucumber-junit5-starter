@@ -13,7 +13,9 @@ public class CucumberSteps {
     //@Given("I have {int} cucumber(s) in my belly/stomach")
     //@Given("^I have (42|1|44) (?:cucumber|cucumbers) in my (belly|stomach)$")
     //@Given("^I have (42|1|44) cucumber(?:s)? in my (belly|stomach)$")
-    @Given("^I have (\\d+) cucumber(?:s)? in my (belly|stomach)$")
+    //@Given("^I have (\\d+) cucumber(?:s)? in my (belly|stomach)$")
+    @Given("^I have (\\d+) cucumbers? in my (belly|stomach)$") //cucumbers?: cucumber veya cucumbers kelimelerini yakalar. ? karakteri, önceki karakterin (bu durumda 's') sıfır veya bir kez geçebileceğini belirtir.
+//(belly|stomach): 'belly' veya 'stomach' kelimelerini yakalar.
     public void i_have_cucumbers_in_my_body(int count, String location) {
         if (location.equals("belly")) {
             bellyCucumbers = count;

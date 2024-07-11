@@ -9,7 +9,8 @@ public class ColorSteps {
     private String description;
 
     //@Given("the color is {word}")
-    @Given("^the color is (.+)$")  // (.+) açgözlü (greedy) bir eşlemedir, herhangi bir karakter dizisini yakalar.
+    //@Given("^the color is (.+)$")  // (.+) açgözlü (greedy) bir eşlemedir, herhangi bir karakter dizisini yakalar, bosluklar dahil
+    @Given("^the color is (\\w+)$")  //Bir veya daha fazla alfanümerik karakteri (harfler ve rakamlar) yakalar. Bu ifade boşluk ve özel karakter içermez..
     public void the_color_is(String color) {
         this.color = color;
     }
