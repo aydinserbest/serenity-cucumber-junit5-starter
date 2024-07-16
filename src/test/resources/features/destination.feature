@@ -14,8 +14,10 @@ Feature: DataTable Usage
       | Elvis Presley   | January 8, 1935 |
       | John Lennon     | October 9, 1940 |
 
-  Scenario: check
-    Then the available destinations should be Berlin, Paris, New York
+  Scenario: Check cities
+    Then the destinations should be Brussels, London, Amsterdam
+
+
 
 
   #Cucumber, feature dosyasındaki tabloyu List<Map<String, String>> türünde bir veri yapısına dönüştürür.

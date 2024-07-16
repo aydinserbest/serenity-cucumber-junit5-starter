@@ -25,18 +25,17 @@ public class Destination {
         }
     }
     @ParameterType(name = "string-values", value = "(.*)")
-    public List<String> stringValues(String destinationList) {
+    public List<String> cityValues(String destinationList) {
         return Stream.of(destinationList.split(","))
                  .map(String::trim)
                  .collect(Collectors.toList());
     }
-    @Then("the available destinations should be {string-values}")
+    @Then("the destinations should be {string-values}")
     public void availableDestinations(List<String> destinations) {
         for (String destination : destinations) {
             System.out.println(destination);
         }
     }
-
 }
 
 /*
