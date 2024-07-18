@@ -10,8 +10,12 @@ public class WithdrawSteps {
     private int balance;
     private int withdrawal;
 
-    //@Given("I have //$(\\d+) in my account") //without using ^
-    @Given("I have ${int} in my account")
+    //@Given("^I have \\$(\\d+) in my account") //it doesn't match without using ^
+    //Regular expressions kullanırken, özel karakterleri kaçırmak (escape) için \ kullanmanız gerekir.
+    // Örneğin, $ karakteri bir regex'de özel bir anlam taşır
+    // ve \$ olarak kaçırılmalıdır.
+    @Given("I have ${int} in my account") //Cucumber expressions'da $ gibi özel karakterleri kaçırmanıza gerek yoktur.
+    // Bu yüzden \$ yerine $ kullanabilirsiniz.
     public void i_have_in_my_account(int balance) {
         this.balance = balance;
     }
