@@ -7,7 +7,7 @@ Feature: Withdraw Fixed Amount
     When I choose to withdraw the fixed amount of <Withdrawal>
     And the balance of my account should be <Remaining>
     Examples:
-      | Balance | Withdrawal  | Remaining |
+      | Balance | Withdrawal | Remaining |
       | $500    | $50        | $450      |
       | $500    | $100       | $400      |
       | $500    | $200       | $300      |
